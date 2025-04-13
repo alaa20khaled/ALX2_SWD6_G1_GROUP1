@@ -30,7 +30,7 @@ This project was created as part of our graduation requirements in the Software 
   - Running test cases
   - Generating test reports
 
-## ⚙ Technologies & Tools
+## Technologies & Tools
 - Selenium
 - Java
 - TestNG
@@ -40,10 +40,10 @@ This project was created as part of our graduation requirements in the Software 
 
 ## 👥 Team Members
 - Alaa Khaled
--Fatma ElZhraa Mahmoud Mohammed
--Mira Samy Louiz
--Mayar Mohammad
--Nour Raafat Elbaz
+- Fatma ElZhraa Mahmoud Mohammed
+- Mira Samy Louiz
+- Mayar Mohammad
+- Nour Raafat Elbaz
 
 
 
