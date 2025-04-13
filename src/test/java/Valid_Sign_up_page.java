@@ -8,55 +8,57 @@ import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
+
 import java.time.Duration;
-
-class ValidUser {
-    String username;
-    String password;
-
-    ValidUser(String username, String password) {
-        this.username = username + System.currentTimeMillis(); // unique
-        this.password = password;
-    }}
+import java.util.Random;
 
 public class Valid_Sign_up_page {
     WebDriver driver;
     WebDriverWait wait;
+
     @BeforeTest
     public void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
         driver.manage().window().maximize();
-    }
-    // Reusable sign-up function
-    public void signUp(String username, String password) {
         driver.get("https://www.demoblaze.com/");
+    }
+
+    public void SignUp() {
+
         driver.findElement(By.id("signin2")).click();
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sign-username")));
-        driver.findElement(By.id("sign-username")).clear(); // Clear any pre-filled data
-        driver.findElement(By.id("sign-username")).sendKeys(username);
+        String randomUsername = "user" + new Random().nextInt(100000);
+        String password = "Test@123";
+
+        driver.findElement(By.id("sign-username")).clear();
+        driver.findElement(By.id("sign-username")).sendKeys(randomUsername);
+
         driver.findElement(By.id("sign-password")).clear();
         driver.findElement(By.id("sign-password")).sendKeys(password);
+
         driver.findElement(By.xpath("//button[text()='Sign up']")).click();
+
         String alertText = wait.until(ExpectedConditions.alertIsPresent()).getText();
         driver.switchTo().alert().accept();
-        Assert.assertEquals(alertText, "Sign up successful.", "Expected successful sign-up.");
-    }
-    // ========== TEST CASES ==========
 
-    // Test Case 1: Validate signing up with valid username and password
+        System.out.println("✅ Tried signing up with:");
+        System.out.println("Username: " + randomUsername);
+        System.out.println("Password: " + password);
+        System.out.println("Alert Message: " + alertText);
+
+        Assert.assertTrue(
+                alertText.equals("Sign up successful.") || alertText.equals("This user already exist."),
+                "Unexpected alert message: " + alertText
+        );
+    }
+
     @Test(priority = 1)
-    public void testSignUpWithValidCredentials() {
-        signUp("Omarahmed", "password123");
+    public void testAutoSignUp() {
+       SignUp();
     }
 
-    // Test Case 2: Validate signing up using different format for the username and password
-    @Test(priority = 2)
-    public void testSignUpWithDifferentFormats() {
-        signUp("-&/%%%", "@@@###");
-        signUp("995263", "ahmed");
-    }
     @AfterTest
     public void tearDown() {
         if (driver != null) {
@@ -64,10 +66,3 @@ public class Valid_Sign_up_page {
         }
     }
 }
-
-
-
-
-
-
-

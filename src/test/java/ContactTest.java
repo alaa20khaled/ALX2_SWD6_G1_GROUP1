@@ -1,5 +1,3 @@
-package TestCases;
-
 import org.testng.annotations.Test;
 import pages.HomePage;
 

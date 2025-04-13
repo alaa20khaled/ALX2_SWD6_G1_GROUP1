@@ -48,7 +48,6 @@ public class Valid_testing_Login {
         login("Ahmed3", "password123");
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("nameofuser")));
 
-        // التحقق إن اسم المستخدم ظهر
         String welcomeText = driver.findElement(By.id("nameofuser")).getText();
         Assert.assertTrue(welcomeText.contains("Welcome"), "Login failed or username not displayed.");
     }

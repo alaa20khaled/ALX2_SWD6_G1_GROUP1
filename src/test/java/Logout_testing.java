@@ -38,7 +38,6 @@ public class Logout_testing {
         // Logout
         driver.findElement(By.id("logout2")).click();
 
-        // Verify if login button is visible again (means user is logged out)
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("login2")));
         Assert.assertTrue(driver.findElement(By.id("login2")).isDisplayed(), "User is not logged out properly.");
     }

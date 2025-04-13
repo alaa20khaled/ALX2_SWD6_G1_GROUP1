@@ -24,21 +24,7 @@ public  class E2E_Testing {
         driver.manage().window().maximize();
         driver.get("https://www.demoblaze.com/");
     }
-/*   @Test(priority = 1)
-    public void signup(){
-        driver.findElement(By.id("signin2")).click();
-        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("sign-username")));
 
-        driver.findElement(By.id("sign-username")).sendKeys("Osama eissa");
-
-        driver.findElement(By.id("sign-password")).sendKeys("password");
-        driver.findElement(By.xpath("//button[text()='Sign up']")).click();
-
-        String alertText = wait.until(ExpectedConditions.alertIsPresent()).getText();
-        driver.switchTo().alert().accept();
-
-        Assert.assertEquals(alertText, "Sign up successful.", "Expected successful sign-up.");
-    }*/
     @Test(priority = 1)
     public void loginTest() {
         driver.findElement(By.id("login2")).click();
@@ -62,17 +48,14 @@ public  class E2E_Testing {
         String alertText = driver.switchTo().alert().getText();
         Assert.assertTrue(alertText.contains("Product added"), "Product was not added to the cart.");
 
-        // قبول التنبيه
         driver.switchTo().alert().accept();
     }
     @Test(priority = 3)
     public void placeOrderTest() {
         driver.findElement(By.id("cartur")).click();
 
-        // انتظر لحد ما زر Place Order يبقى قابل للنقر
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Place Order']"))).click();
 
-        // انتظر ظهور الفورم واملأ البيانات
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("name"))).sendKeys("Ahmed");
         driver.findElement(By.id("country")).sendKeys("Egypt");
         driver.findElement(By.id("city")).sendKeys("Cairo");
@@ -80,17 +63,14 @@ public  class E2E_Testing {
         driver.findElement(By.id("month")).sendKeys("04");
         driver.findElement(By.id("year")).sendKeys("2025");
 
-        // اضغط على Purchase
         wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//button[text()='Purchase']"))).click();
 
-        // انتظر الرسالة
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.className("sweet-alert")));
 
-        // تحقق من الرسالة
+
         String purchaseConfirmation = driver.findElement(By.className("sweet-alert")).getText();
         Assert.assertTrue(purchaseConfirmation.contains("Thank you for your purchase!"), "Purchase was not successful.");
 
-        // اضغط OK
         driver.findElement(By.xpath("//button[text()='OK']")).click();
     }
 

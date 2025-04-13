@@ -77,7 +77,6 @@ public class CartPageTest {
             deleteLink.click();
             Thread.sleep(2000);
 
-            // Step 6: Verify that the item is deleted
             List<WebElement> currentCartItems = driver.findElements(By.xpath("//tbody[@id='tbodyid']/tr"));
             int currentItemCount = currentCartItems.size();
 

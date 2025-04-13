@@ -49,7 +49,7 @@ public class Invalid_testing_SignUp {
 
     @Test(priority = 1)
     public void testSignUpWithBlankUsername() {
-        signUp("", "password123"); // Leave username blank
+        signUp("", "password123");
         // Check if the alert or error message appears for the blank username field
         String alertText = wait.until(ExpectedConditions.alertIsPresent()).getText();
         Assert.assertTrue(alertText.contains("Please fill out Username and Password."), "Expected alert for blank username.");
@@ -74,7 +74,7 @@ public class Invalid_testing_SignUp {
         String alertText1 = wait.until(ExpectedConditions.alertIsPresent()).getText();
         driver.switchTo().alert().accept();
 
-        // Try to sign up again using the same username
+
         signUp(username, password); // Reuse the same username
 
         // Check if an alert appears, indicating the username is already taken
