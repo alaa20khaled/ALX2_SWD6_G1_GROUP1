@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Test Suite">
+    <test name="Test Series">
+        <classes>
+            <class name="Valid_Sign_up_page" />
+            <class name="Invalid_testing_SignUp" />
+            <class name="Valid_testing_Login" />
+            <class name="Invalid_testing_login" />
+            <class name="TestHomePage" />
+            <class name="ProductPageTest" />
+            <class name="CartPageTest" />
+            <class name="ContactTest" />
+            <class name="E2E_Testing"></class>
+            <class name="Logout_testing"></class>
+            <class name="PaymentInfoPageTest"></class>
+            
+        </classes>
+        
+    </test>
+</suite>
